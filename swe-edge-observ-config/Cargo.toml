@@ -1,0 +1,47 @@
+[package]
+name         = "swe-edge-observ-config"
+version      = "0.1.0"
+edition      = "2021"
+license      = "MIT"
+rust-version = "1.75"
+authors      = ["SWE Engineering Labs"]
+repository   = "https://github.com/sweengineeringlabs/edge"
+description  = "Standalone, runtime-independent observability configuration for swe-edge services."
+keywords     = ["observability", "tracing", "config", "toml", "swe"]
+categories   = ["development-tools"]
+
+[package.metadata.struct-engine]
+application_type = "lib"
+service_type     = "observability"
+
+[lib]
+name = "swe_edge_observ_config"
+path = "src/lib.rs"
+
+[features]
+default       = []
+observability = ["dep:tracing-subscriber", "dep:tracing"]
+
+[dependencies]
+serde              = { version = "1.0", features = ["derive"] }
+tracing            = { version = "0.1", optional = true }
+tracing-subscriber = { version = "0.3", optional = true, features = ["env-filter", "json"] }
+
+[dev-dependencies]
+toml = "0.8"
+
+[lints.rust]
+unsafe_code  = "deny"
+missing_docs = "warn"
+
+[[test]]
+name = "observability_int_test"
+path = "tests/observability_int_test.rs"
+
+[[test]]
+name = "tracing_config_int_test"
+path = "tests/tracing_config_int_test.rs"
+
+[[test]]
+name = "traits_int_test"
+path = "tests/traits_int_test.rs"
