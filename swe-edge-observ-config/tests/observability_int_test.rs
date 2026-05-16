@@ -1,5 +1,6 @@
 //! Integration tests for the SAF init_tracing function.
 
+#[cfg(feature = "observability")]
 use swe_edge_observ_config::{TracingConfig, TracingFormat, TracingLevel};
 
 /// @covers: init_tracing

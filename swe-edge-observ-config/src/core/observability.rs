@@ -67,7 +67,6 @@ pub(crate) fn init_tracing(config: &TracingConfig) {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use crate::api::tracing_level::TracingLevel;
 
     #[test]
     fn test_default_observability_init_without_feature_is_noop() {
@@ -105,6 +104,7 @@ mod tests {
     #[cfg(feature = "observability")]
     #[test]
     fn test_init_tracing_with_custom_level_does_not_panic() {
+        use crate::api::tracing_level::TracingLevel;
         let cfg = TracingConfig {
             level: TracingLevel::Warn,
             ..TracingConfig::default()
