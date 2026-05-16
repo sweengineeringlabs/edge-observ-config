@@ -21,7 +21,7 @@ mod tests {
 
     #[test]
     fn test_tracing_format_variants_are_constructible() {
-        let _json   = TracingFormat::Json;
+        let _json = TracingFormat::Json;
         let _pretty = TracingFormat::Pretty;
     }
 
@@ -33,10 +33,12 @@ mod tests {
     #[test]
     fn test_tracing_format_deserializes_from_lowercase_toml() {
         #[derive(serde::Deserialize)]
-        struct W { format: TracingFormat }
-        let json:   W = toml::from_str(r#"format = "json""#).unwrap();
+        struct W {
+            format: TracingFormat,
+        }
+        let json: W = toml::from_str(r#"format = "json""#).unwrap();
         let pretty: W = toml::from_str(r#"format = "pretty""#).unwrap();
-        assert_eq!(json.format,   TracingFormat::Json);
+        assert_eq!(json.format, TracingFormat::Json);
         assert_eq!(pretty.format, TracingFormat::Pretty);
     }
 }

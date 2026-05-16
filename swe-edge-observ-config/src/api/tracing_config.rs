@@ -27,9 +27,9 @@ impl Default for TracingConfig {
     fn default() -> Self {
         Self {
             enabled: true,
-            format:  TracingFormat::Pretty,
-            level:   TracingLevel::Info,
-            filter:  None,
+            format: TracingFormat::Pretty,
+            level: TracingLevel::Info,
+            filter: None,
         }
     }
 }

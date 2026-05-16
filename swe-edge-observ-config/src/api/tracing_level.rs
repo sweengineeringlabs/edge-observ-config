@@ -27,8 +27,8 @@ impl TracingLevel {
         match self {
             Self::Trace => "trace",
             Self::Debug => "debug",
-            Self::Info  => "info",
-            Self::Warn  => "warn",
+            Self::Info => "info",
+            Self::Warn => "warn",
             Self::Error => "error",
         }
     }
@@ -47,15 +47,17 @@ mod tests {
     fn test_tracing_level_as_str_matches_lowercase_variant_name() {
         assert_eq!(TracingLevel::Trace.as_str(), "trace");
         assert_eq!(TracingLevel::Debug.as_str(), "debug");
-        assert_eq!(TracingLevel::Info.as_str(),  "info");
-        assert_eq!(TracingLevel::Warn.as_str(),  "warn");
+        assert_eq!(TracingLevel::Info.as_str(), "info");
+        assert_eq!(TracingLevel::Warn.as_str(), "warn");
         assert_eq!(TracingLevel::Error.as_str(), "error");
     }
 
     #[test]
     fn test_tracing_level_deserializes_from_lowercase_toml_string() {
         #[derive(serde::Deserialize)]
-        struct W { level: TracingLevel }
+        struct W {
+            level: TracingLevel,
+        }
         let w: W = toml::from_str(r#"level = "warn""#).unwrap();
         assert_eq!(w.level, TracingLevel::Warn);
     }
@@ -63,8 +65,13 @@ mod tests {
     #[test]
     fn test_tracing_level_serializes_to_lowercase_string() {
         #[derive(serde::Serialize)]
-        struct W { level: TracingLevel }
-        let s = toml::to_string(&W { level: TracingLevel::Error }).unwrap();
+        struct W {
+            level: TracingLevel,
+        }
+        let s = toml::to_string(&W {
+            level: TracingLevel::Error,
+        })
+        .unwrap();
         assert!(s.contains("\"error\""), "serialized: {s}");
     }
 }

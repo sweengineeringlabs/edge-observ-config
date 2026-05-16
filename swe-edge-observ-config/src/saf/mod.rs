@@ -22,10 +22,10 @@ mod tests {
 
     #[test]
     fn test_saf_types_are_publicly_accessible() {
-        let _: TracingConfig        = TracingConfig::default();
-        let _: ObservabilityConfig  = ObservabilityConfig::default();
-        let _: TracingLevel         = TracingLevel::default();
-        let _: TracingFormat        = TracingFormat::default();
+        let _: TracingConfig = TracingConfig::default();
+        let _: ObservabilityConfig = ObservabilityConfig::default();
+        let _: TracingLevel = TracingLevel::default();
+        let _: TracingFormat = TracingFormat::default();
     }
 
     #[cfg(feature = "observability")]

@@ -6,7 +6,10 @@ use swe_edge_observ_config::{TracingConfig, TracingFormat, TracingLevel};
 #[cfg(feature = "observability")]
 #[test]
 fn test_init_tracing_int_json_format_does_not_panic() {
-    let cfg = TracingConfig { format: TracingFormat::Json, ..TracingConfig::default() };
+    let cfg = TracingConfig {
+        format: TracingFormat::Json,
+        ..TracingConfig::default()
+    };
     swe_edge_observ_config::init_tracing(&cfg);
 }
 
@@ -29,7 +32,10 @@ fn test_init_tracing_int_idempotent_called_twice_does_not_panic() {
 #[cfg(feature = "observability")]
 #[test]
 fn test_init_tracing_int_disabled_is_noop() {
-    let cfg = TracingConfig { enabled: false, ..TracingConfig::default() };
+    let cfg = TracingConfig {
+        enabled: false,
+        ..TracingConfig::default()
+    };
     swe_edge_observ_config::init_tracing(&cfg);
 }
 
@@ -37,7 +43,10 @@ fn test_init_tracing_int_disabled_is_noop() {
 #[cfg(feature = "observability")]
 #[test]
 fn test_init_tracing_int_warn_level_does_not_panic() {
-    let cfg = TracingConfig { level: TracingLevel::Warn, ..TracingConfig::default() };
+    let cfg = TracingConfig {
+        level: TracingLevel::Warn,
+        ..TracingConfig::default()
+    };
     swe_edge_observ_config::init_tracing(&cfg);
 }
 
