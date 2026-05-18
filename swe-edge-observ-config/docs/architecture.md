@@ -56,3 +56,11 @@ format = "json"      # json | pretty | compact
 | `TracingConfig` | Tracing level, format, and output destination |
 | `TracingLevel` | Enum — `Trace`, `Debug`, `Info`, `Warn`, `Error` |
 | `TracingFormat` | Enum — `Json`, `Pretty`, `Compact` |
+
+---
+
+## See Also
+
+- [Config Architecture](../../../config/swe-edge-config/docs/architecture.md)
+- [Runtime Architecture](../../../runtime/docs/architecture.md)
+- [Architecture Overview](../../../docs/3-architecture/architecture.md)
