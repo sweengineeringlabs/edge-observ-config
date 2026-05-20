@@ -18,7 +18,7 @@ impl DefaultSweEdgeObservConfig {
 impl SweEdgeObservConfig for DefaultSweEdgeObservConfig {
     fn execute(&self, config: &Config) -> Result<(), Error> {
         if config.verbose {
-            println!("[swe-edge-observ-config] executing with verbose=true");
+            tracing::info!("[swe-edge-observ-config] executing with verbose=true");
         }
         Ok(())
     }
