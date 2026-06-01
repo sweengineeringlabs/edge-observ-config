@@ -1,7 +1,8 @@
-//! Public API layer — traits and types.
+//! Public API layer — traits, types, and error.
 
-pub mod observability_config;
-pub mod tracing_config;
-pub mod tracing_format;
-pub mod tracing_level;
+pub mod default;
+pub mod error;
+pub mod observability;
 pub mod traits;
+pub mod tracing;
+pub mod types;

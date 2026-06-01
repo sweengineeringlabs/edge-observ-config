@@ -24,6 +24,7 @@ observability = ["dep:tracing-subscriber", "dep:tracing"]
 
 [dependencies]
 serde              = { version = "1.0", features = ["derive"] }
+thiserror          = "2.0"
 tracing            = { version = "0.1", optional = true }
 tracing-subscriber = { version = "0.3", optional = true, features = ["env-filter", "json"] }
 
@@ -35,13 +36,77 @@ unsafe_code  = "deny"
 missing_docs = "warn"
 
 [[test]]
+name = "config_int_test"
+path = "tests/config_int_test.rs"
+
+[[test]]
+name = "default_swe_edge_observ_config_int_test"
+path = "tests/default_swe_edge_observ_config_int_test.rs"
+
+[[test]]
+name = "domain_int_test"
+path = "tests/domain_int_test.rs"
+
+[[test]]
+name = "error_int_test"
+path = "tests/error_int_test.rs"
+
+[[test]]
+name = "observability_config_int_test"
+path = "tests/observability_config_int_test.rs"
+
+[[test]]
+name = "observ_config_error_int_test"
+path = "tests/observ_config_error_int_test.rs"
+
+[[test]]
 name = "observability_int_test"
 path = "tests/observability_int_test.rs"
+
+[[test]]
+name = "observ_config_svc_int_test"
+path = "tests/observ_config_svc_int_test.rs"
+
+[[test]]
+name = "swe_edge_observ_config_api_int_test"
+path = "tests/swe_edge_observ_config_api_int_test.rs"
+
+[[test]]
+name = "swe_edge_observ_config_int_test"
+path = "tests/swe_edge_observ_config_int_test.rs"
+
+[[test]]
+name = "swe_edge_observ_config_test"
+path = "tests/swe_edge_observ_config_test.rs"
 
 [[test]]
 name = "tracing_config_int_test"
 path = "tests/tracing_config_int_test.rs"
 
 [[test]]
+name = "tracing_svc_int_test"
+path = "tests/tracing_svc_int_test.rs"
+
+[[test]]
 name = "traits_int_test"
 path = "tests/traits_int_test.rs"
+
+[[test]]
+name = "tracing_format_int_test"
+path = "tests/tracing_format_int_test.rs"
+
+[[test]]
+name = "tracing_level_int_test"
+path = "tests/tracing_level_int_test.rs"
+
+[[test]]
+name = "validator_int_test"
+path = "tests/validator_int_test.rs"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
+
+[[test]]
+name = "application_config_builder_int_test"
+path = "tests/application_config_builder_int_test.rs"
