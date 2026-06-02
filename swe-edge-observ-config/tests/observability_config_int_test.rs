@@ -11,13 +11,19 @@ fn test_observability_config_int_default_has_tracing_enabled() {
 /// @covers: ObservabilityConfig
 #[test]
 fn test_observability_config_int_default_level_is_info() {
-    assert_eq!(ObservabilityConfig::default().tracing.level, TracingLevel::Info);
+    assert_eq!(
+        ObservabilityConfig::default().tracing.level,
+        TracingLevel::Info
+    );
 }
 
 /// @covers: ObservabilityConfig
 #[test]
 fn test_observability_config_int_default_format_is_pretty() {
-    assert_eq!(ObservabilityConfig::default().tracing.format, TracingFormat::Pretty);
+    assert_eq!(
+        ObservabilityConfig::default().tracing.format,
+        TracingFormat::Pretty
+    );
 }
 
 /// @covers: ObservabilityConfig

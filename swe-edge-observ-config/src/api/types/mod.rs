@@ -3,7 +3,7 @@
 pub mod application_config_builder;
 pub use application_config_builder::ApplicationConfigBuilder;
 pub mod config;
-pub mod observability_config;
 pub mod observ_config_svc;
+pub mod observability_config;
 pub mod swe_edge_observ_config;
 pub mod tracing_svc;

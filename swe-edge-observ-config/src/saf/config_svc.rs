@@ -23,7 +23,9 @@ impl TracingSvc {
 
 impl ObservConfigSvc {
     /// Execute the primary operation with the given configuration.
-    pub fn execute(config: &crate::api::types::config::Config) -> Result<(), crate::api::error::ObservConfigError> {
+    pub fn execute(
+        config: &crate::api::types::config::Config,
+    ) -> Result<(), crate::api::error::ObservConfigError> {
         let svc = crate::core::DefaultSweEdgeObservConfig::new();
         svc.execute(config)
     }

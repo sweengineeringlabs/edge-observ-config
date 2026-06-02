@@ -5,14 +5,19 @@ use swe_edge_observ_config::ObservConfigError;
 /// @covers: ObservConfigError
 #[test]
 fn test_observ_config_error_int_io_variant_displays_correctly() {
-    let err = ObservConfigError::Io(std::io::Error::new(std::io::ErrorKind::NotFound, "missing file"));
+    let err = ObservConfigError::Io(std::io::Error::new(
+        std::io::ErrorKind::NotFound,
+        "missing file",
+    ));
     assert!(err.to_string().contains("I/O error"), "display: {err}");
 }
 
 /// @covers: ObservConfigError
 #[test]
 fn test_observ_config_error_int_config_variant_displays_message() {
-    let err = ObservConfigError::Config { message: "bad level".to_string() };
+    let err = ObservConfigError::Config {
+        message: "bad level".to_string(),
+    };
     assert!(err.to_string().contains("bad level"), "display: {err}");
 }
 

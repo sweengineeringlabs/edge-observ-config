@@ -1,7 +1,7 @@
 //! `DefaultObservability` — default tracing subscriber implementation.
 
-use crate::api::traits::observability::Observability;
 use crate::api::tracing::tracing_config::TracingConfig;
+use crate::api::traits::observability::Observability;
 
 /// Default implementation of [`Observability`].
 ///

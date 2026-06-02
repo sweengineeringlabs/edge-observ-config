@@ -3,6 +3,6 @@
 pub mod default;
 pub mod error;
 pub mod observability;
-pub mod traits;
 pub mod tracing;
+pub mod traits;
 pub mod types;
