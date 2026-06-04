@@ -5,6 +5,20 @@ use serde::{Deserialize, Serialize};
 /// Minimum log level for the tracing subscriber.
 ///
 /// Overridden at runtime by the `RUST_LOG` environment variable.
+/// Defaults to `Info`. Use `as_str()` to get the directive string for
+/// `EnvFilter::new()` or log macros.
+///
+/// # Examples
+///
+/// ```rust
+/// use swe_edge_observ_config::TracingLevel;
+///
+/// assert_eq!(TracingLevel::default(), TracingLevel::Info);
+/// assert_eq!(TracingLevel::Info.as_str(), "info");
+/// assert_eq!(TracingLevel::Debug.as_str(), "debug");
+/// assert_eq!(TracingLevel::Error.as_str(), "error");
+/// assert_ne!(TracingLevel::Warn, TracingLevel::Error);
+/// ```
 #[derive(Debug, Clone, Default, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(rename_all = "lowercase")]
 pub enum TracingLevel {

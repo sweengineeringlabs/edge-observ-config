@@ -9,6 +9,29 @@ use crate::api::tracing::tracing_level::TracingLevel;
 ///
 /// Maps from the `[observability.tracing]` TOML section.
 /// `RUST_LOG` always takes precedence over `level` and `filter`.
+///
+/// # Examples
+///
+/// ```rust
+/// use swe_edge_observ_config::{TracingConfig, TracingFormat, TracingLevel};
+///
+/// // SWE baseline: enabled, pretty format, info level.
+/// let cfg = TracingConfig::default();
+/// assert!(cfg.enabled);
+/// assert_eq!(cfg.format, TracingFormat::Pretty);
+/// assert_eq!(cfg.level, TracingLevel::Info);
+/// assert!(cfg.filter.is_none());
+///
+/// // Production: JSON format, warn level, module filter.
+/// let cfg = TracingConfig {
+///     enabled: true,
+///     format: TracingFormat::Json,
+///     level: TracingLevel::Warn,
+///     filter: Some("hyper=error,tower=warn".to_string()),
+/// };
+/// assert_eq!(cfg.level, TracingLevel::Warn);
+/// assert_eq!(cfg.filter.as_deref(), Some("hyper=error,tower=warn"));
+/// ```
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(default)]
 pub struct TracingConfig {
