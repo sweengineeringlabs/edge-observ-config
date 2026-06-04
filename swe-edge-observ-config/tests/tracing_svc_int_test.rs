@@ -1,4 +1,5 @@
 //! Integration tests for `TracingSvc` and `TracingFormat`/`TracingLevel` types.
+#![allow(clippy::unwrap_used, clippy::expect_used)]
 
 use swe_edge_observ_config::{TracingFormat, TracingLevel};
 
