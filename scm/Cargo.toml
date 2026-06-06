@@ -5,7 +5,7 @@ edition      = "2021"
 license      = "MIT OR Apache-2.0"
 rust-version = "1.95"
 authors      = ["SWE Engineering Labs"]
-repository   = "https://github.com/sweengineeringlabs/edge"
+repository   = "https://github.com/sweengineeringlabs/edge-observ-config"
 description  = "Standalone, runtime-independent observability configuration for swe-edge services."
 keywords     = ["observability", "tracing", "config", "toml", "swe"]
 categories   = ["development-tools"]
@@ -16,7 +16,7 @@ service_type     = "observability"
 
 [lib]
 name = "swe_edge_observ_config"
-path = "src/lib.rs"
+path = "main/src/lib.rs"
 
 [features]
 default       = []
@@ -34,6 +34,10 @@ toml = "0.8"
 [lints.rust]
 unsafe_code  = "deny"
 missing_docs = "warn"
+
+[lints.clippy]
+unwrap_used = "deny"
+expect_used = "deny"
 
 [[test]]
 name = "config_int_test"
@@ -103,10 +107,10 @@ path = "tests/tracing_level_int_test.rs"
 name = "validator_int_test"
 path = "tests/validator_int_test.rs"
 
-[lints.clippy]
-unwrap_used = "deny"
-expect_used = "deny"
-
 [[test]]
 name = "application_config_builder_int_test"
 path = "tests/application_config_builder_int_test.rs"
+
+[[example]]
+name = "basic"
+path = "examples/basic.rs"
