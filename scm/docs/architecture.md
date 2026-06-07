@@ -59,6 +59,46 @@ format = "json"      # json | pretty | compact
 
 ---
 
+## Sequence
+
+> `TracingConfig` is loaded from TOML; `init_tracing()` installs the subscriber once at process startup.
+
+```mermaid
+sequenceDiagram
+    participant Runtime
+    participant ConfigLoader
+    participant TracingConfig
+    participant TracingSubscriber
+
+    Runtime->>ConfigLoader: load_section("observability.tracing")
+    ConfigLoader-->>Runtime: TracingConfig{level, format, output}
+
+    Runtime->>TracingConfig: validate()
+    TracingConfig-->>Runtime: Result<(), ConfigError>
+
+    Runtime->>TracingSubscriber: init_tracing(config)
+    TracingSubscriber->>TracingSubscriber: build subscriber\n(json/pretty/compact fmt\n+ env-filter)
+    TracingSubscriber-->>Runtime: subscriber installed globally
+```
+
+## Data Flow
+
+> A TOML `[observability.tracing]` section becomes an installed `tracing-subscriber`; all subsequent `tracing::` calls are routed through it.
+
+```mermaid
+flowchart LR
+    A["TOML\n───────────\n[observability.tracing]\nlevel = 'info'\nformat = 'json'"] --> B["ConfigLoader\n::load_section"]
+    B --> C["TracingConfig\n───────────\nlevel: TracingLevel\nformat: TracingFormat\noutput: TracingOutput"]
+    C --> D["init_tracing(config)\n(feature: observability)"]
+    D --> E{TracingFormat}
+    E -->|Json| F["JsonSubscriber\n(machine-readable\nfor log aggregators)"]
+    E -->|Pretty| G["PrettySubscriber\n(human-readable\nfor dev terminals)"]
+    E -->|Compact| H["CompactSubscriber\n(minimal lines)"]
+    F --> I["tracing::info!\ntracing::warn!\n… → formatted output"]
+    G --> I
+    H --> I
+```
+
 ## See Also
 
 - [Config Architecture](../../../config/swe-edge-config/docs/architecture.md)
