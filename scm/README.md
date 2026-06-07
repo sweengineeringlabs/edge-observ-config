@@ -1,28 +1,29 @@
 # swe-edge-observ-config
 
-A SEA-compliant Rust project.
+> **TLDR:** Typed observability configuration for swe-edge — tracing level, format, and subscriber initialisation with production-safe defaults. No runtime dependency. See [Overview](docs/README.md) for details.
 
-## Build
+Standalone typed observability configuration for swe-edge services.
 
-```bash
-cargo build
+## Quick Start
+
+```rust
+use swe_edge_observ_config::{ObservabilityConfig, TracingSvc};
+
+// Load from TOML or use defaults
+let config = ObservabilityConfig::default();
+TracingSvc::init(&config.tracing)?;
 ```
 
-## Test
+Override via `application.toml`:
 
-```bash
-cargo test
+```toml
+[tracing]
+level  = "debug"
+format = "json"
 ```
 
-## Project Structure
+## Documentation
 
-
-- `src/api/` - Public types and traits (L2)
-
-- `src/core/` - Implementation layer (L3)
-
-- `src/saf/` - Public facade (L4)
-
-
-
-
+| Document | Description |
+|----------|-------------|
+| [Overview](docs/README.md) | WHAT + WHY — capabilities and design rationale |
